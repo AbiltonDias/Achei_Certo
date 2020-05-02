@@ -1,0 +1,44 @@
+.home-container{
+    width: 100%;
+    max-width: 1120px;
+    height: 100vh;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.home-container section.form{
+    width: 100%;
+    max-width: 350px;
+    margin-right: 30px;
+}
+.home-container section.form logon-usuario{
+    margin-top: 50px;
+}
+
+.logon-usuario h1{
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #7D3AEA;
+}
+
+.logon-usuario p{
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #737380;
+}
+
+.logon-instituicao{
+    margin-top: 50px;
+}
+.logon-instituicao h1{
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #7D3AEA;
+}
+.logon-instituicao p{
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #737380;
+}

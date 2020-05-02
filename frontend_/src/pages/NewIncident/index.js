@@ -7,28 +7,28 @@ import './styles.css';
 import acheiLogo from '../../assets/Logo_Achei.svg';
 
 export default function NewIncident(){
-    const [title, setTitle] = useState('');
+    const [numberDoc, setNumberDoc] = useState('');
     const [description, setDescription ] = useState('');
-    const [value,setValue] = useState('');
+    const [name,setName] = useState('');
     const history = useHistory();
     const ongId = localStorage.getItem('OngId');
 
     async function handleNewIncident(e){
         e.preventDefault();
         const data = {
-            title,
-            description,
-            value
+            numberDoc,
+            name,
+            description
         }
 
         try{
-            api.post('incidents', data, {
+            api.post('documents', data, {
                 headers: {
                     Authorization: ongId,
                 }
             });
             alert('Criado com sucesso!');
-            history.push('/profile');
+            history.push('/profiles');
 
         }catch(error){
             alert('Erro ao cadastrar, tente novamente')
@@ -49,20 +49,21 @@ export default function NewIncident(){
                 </section>
                 <form onSubmit={handleNewIncident}>
                     <input
-                        placeholder='Título do caso'
-                        value={title}
-                        onChange={e=>setTitle(e.target.value)}
+                        placeholder='Número do Documento'
+                        value={numberDoc}
+                        onChange={e=>setNumberDoc(e.target.value)}
+                    />
+                    <input
+                        placeholder='Nome Completo que está no Documento'
+                        value={name}
+                        onChange={e=>setName(e.target.value)}
                     />
                     <textarea
                         placeholder='Descrição detalhada'
                         value={description}
                         onChange={e=>setDescription(e.target.value)}
                     />
-                    <input
-                        placeholder='Valor da Sugerido para Recompensa'
-                        value={value}
-                        onChange={e=>setValue(e.target.value)}
-                    />
+                    
                     <button className='button' type='submit'> Cadastrar</button>
                 </form>
             </div>

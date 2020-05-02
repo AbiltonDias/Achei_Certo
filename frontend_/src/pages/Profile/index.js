@@ -9,7 +9,8 @@ export default function Profile(){
     const ongId = localStorage.getItem('OngId');
     const ongName = localStorage.getItem('OngName');
     const history = useHistory();
-    const [incidents, setIncidents] = useState([]);
+    //const [incidents, setIncidents] = useState([]);
+    const [documents, setDocuments] = useState([]);
 
     useEffect(() => {
         api.get('profiles', {
@@ -17,19 +18,19 @@ export default function Profile(){
                 Authorization: ongId,
             }
         }).then(response => {
-            setIncidents(response.data);
+            setDocuments(response.data);
         })
     }, [ongId])
 
-    async function handleDeleteIncident(id){
+    async function handleDeleteDocuments(id){
         try{
-            await api.delete(`incidents/${id}`, {
+            await api.delete(`documents/${id}`, {
                 headers:{
                     Authorization: ongId,
                 }
             });
             
-            setIncidents(incidents.filter(incident => incident.id !== id));
+            setDocuments(documents.filter(document => document.id !== id));
 
         }catch(error){
             alert('Erro ao deletar o caso, tente novamente');
@@ -53,23 +54,22 @@ export default function Profile(){
                 </button>
             </header>
             
-            <h1> Casos Cadastrados </h1>
+            <h1> Documentos Cadastrados </h1>
             
             <ul>
-                {incidents.map(incident => (
-                    <li key={incident.id}>
+                {documents.map(document => (
+                    <li key={document.id}>
                         
-                        <strong> CASO: </strong>
-                        <p>{incident.title}</p>
+                        <strong> DOCUMENTO: </strong>
+                        <p>{document.numberDoc}</p>
+
+                        <strong>NOME DO DONO DO DOCUMENTO:</strong>
+                        <p>{document.name}</p>
 
                         <strong>DESCRIÇÃO:</strong>
-                        <p>{incident.description}</p>
+                        <p>{document.description}</p>
 
-                        <strong>SUJESTÃO RECOMPENSA:</strong>
-                        <p>{Intl.NumberFormat('pt-BR', {
-                            style:'currency',currency: 'BRL'}).format(incident.value) }</p>
-                        
-                        <button onClick={ () => handleDeleteIncident(incident.id)} 
+                        <button onClick={ () => handleDeleteDocuments(document.id)} 
                             type='button'>
                                 <FiTrash2 size={20} color='#a8a8b3' />
                             </button>

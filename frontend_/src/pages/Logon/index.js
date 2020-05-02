@@ -4,7 +4,7 @@ import { FiLogIn } from 'react-icons/fi';
 
 import api from '../../services/api';
 import './styles.css';
-import acheiImg from '../../assets/Sem Fundo.png';
+import acheiImg from '../../assets/ongLogon.png';
 import acheiLogo from '../../assets/Logo_Achei.svg';
 
 export default function Logon(){

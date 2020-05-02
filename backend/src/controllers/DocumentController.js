@@ -37,6 +37,24 @@ module.exports = {
             user_id
         });
         return response.json({ id });
+    },
+    async delete(request, response){
+        const { id } = request.params;
+        const ong_id = request.headers.authorization;
+
+        const document = await connection('documents')
+        .where('id', id)
+        .select('ong_id')
+        .first();
+
+        if(document.ong_id != ong_id){
+            return response.status(401)
+            .json({
+                error: 'Operation not permition.'
+            });
+        }
+        await connection('documents').where('id',id).delete();
+        return response.status(204).send();
     }
 }
 
