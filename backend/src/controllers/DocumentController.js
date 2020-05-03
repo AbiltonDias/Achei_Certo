@@ -55,6 +55,31 @@ module.exports = {
         }
         await connection('documents').where('id',id).delete();
         return response.status(204).send();
-    }
-}
+    },
 
+    async porIdAndName(request, response){
+        const {numberDoc} = request.params;
+        
+        if(numberDoc == null || numberDoc == ''){
+            return response.status(401)
+            .json({
+                error: 'Operation not permition.Nenhum campo pode está vazio, tente novamente'
+            })
+        }
+        const document = await connection('documents')
+        .join('ongs','ongs.id','=','documents.ong_id')
+        .where('numberDoc', numberDoc)
+        .select([
+            'documents.*',
+            'ongs.name as OngName' ,
+            'ongs.email',
+            'ongs.whatsapp',
+            'ongs.city',
+            'ongs.uf'
+        ])
+        .first();
+        
+        return response.json(document);
+    }
+
+}

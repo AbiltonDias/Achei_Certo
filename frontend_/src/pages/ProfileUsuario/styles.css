@@ -1,0 +1,42 @@
+.profile-container{
+    width: 100%;
+    max-width: 1180px;
+    padding: 0 30px;
+    margin: 32px auto;
+    
+   
+    
+}
+.profile-container header{
+    display: flex;
+    align-items: center;
+}
+.profile-container header span{
+    font-size: 20px;
+    margin-left: 24px;
+}
+.profile-container header img{
+    height: 64px;
+}
+.profile-container section .form{
+    width: 100%;
+    max-width: 350px;
+    margin-right: 20px;
+    
+    
+}
+.profile-container section.form form{
+    margin-top: 30px;
+}
+.profile-container section.form form h1{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.profile-container section.form form input{
+    margin-bottom: 12px;
+}
+.profile-container .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

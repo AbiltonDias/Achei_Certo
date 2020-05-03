@@ -16,13 +16,11 @@ export default function LogonUsuario(){
         e.preventDefault();
 
         try{
-            const response = await api.get('usuarios', {email, password});
+            const response = await api.get(`usuarios?email=${email}&&password=${password}`);
             localStorage.setItem('emailUsuario', email);
-            localStorage.setItem('IdUsuario', response.data.id);
             localStorage.setItem('nameUsuario', response.data.name);
             history.push('/profile-usuario');
-           
-
+            
         }catch(error){
             alert('Falha no Login, tente novamente!');
         }

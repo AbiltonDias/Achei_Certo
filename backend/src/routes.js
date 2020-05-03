@@ -22,12 +22,13 @@ routes.post('/sessions', SessionController.create);
 routes.get('/profiles',ProfileController.index);
 
 //USUARIOS
-routes.get('/usuarios/:id', UsuarioController.porId);
+routes.get('/usuarios', UsuarioController.porEmailAndPass);
 routes.get('/usuarios', UsuarioController.index);
 routes.post('/usuarios',UsuarioController.create);
 
 //DOCUMENTS
 routes.get('/documents', DocumentController.index);
+routes.get('/documents/:numberDoc', DocumentController.porIdAndName);
 routes.post('/documents', DocumentController.create);
 routes.delete('/documents/:id', DocumentController.delete);
 module.exports = routes;

@@ -7,6 +7,8 @@ import Register from './pages/Register'
 import Home from './pages/Home';
 import LogonUsuario from './pages/LogonUsuario';
 import ProfileUsuario from './pages/ProfileUsuario';
+import NewUsuario from './pages/NewUsuario';
+import DetailsDocument from './pages/DetailsDocument';
 
 export default function Routes(){
     return(
@@ -19,6 +21,8 @@ export default function Routes(){
                 <Route path='/register' component={Register} />
                 <Route path='/usuarios' component={LogonUsuario} />
                 <Route path='/profile-usuario'component={ProfileUsuario} />
+                <Route path='/register-usuario' component={NewUsuario} />
+                <Route path='/detailsDocument' component={DetailsDocument} />
             </Switch>
         </BrowserRouter>
     )

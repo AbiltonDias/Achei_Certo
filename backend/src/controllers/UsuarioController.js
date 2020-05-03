@@ -13,15 +13,28 @@ module.exports = {
         response.header('X-Total-Count',count['count(*)']);
         return response.json(usuarios);
     },
-    async porId(request, response){
-        const { id } = request.params;
-        const usuario_id =  request.headers.authorization;
+    async porEmailAndPass(request, response){
+        const { email } = request.query;
+        const { password } = request.query;
 
+        if(email === null || email == '' || password === null || password == ''){
+            return response.status(401)
+            .json({
+                error: 'Operation not permition. Nenhum campo pode está vazio, tente novamente.'
+            })
+        }
         const usuario = await connection('achei_usuarios')
-        .where('id', id)
-        .select('usuario_id')
-        .first();
-
+            .where('email', email )
+            .where('password', password)
+            .select(['email','name'])
+            .first();
+        
+        if(usuario == undefined){
+            return response.status(401)
+            .json({
+                error: 'Operation not permition. Dados Incorretos ou usuario não tem cadastro, tente novamente'
+            })
+        }      
         return response.json(usuario);
 
     },
