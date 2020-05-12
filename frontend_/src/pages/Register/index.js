@@ -2,6 +2,7 @@ import React,{ useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
+import loading from '../uteis/Loading';
 import './styles.css';
 import acheiLogo from '../../assets/Logo_Achei.svg';
 import api from '../../services/api';
@@ -26,8 +27,9 @@ export default function Register(){
         };
         try{
             const response = await api.post('ongs',data);
+            //localStorage.setItem('idInstituicao', response.data.id);
             alert(`O Seu ID de acesso é: ${response.data.id}`);
-            history.push('/');
+            history.push('/profiles');
 
         }catch(error){
             alert('Erro no cadastro tente novamente');

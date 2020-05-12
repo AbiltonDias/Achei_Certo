@@ -25,6 +25,7 @@ export default function ProfileUsuario(){
             const response = await api.get(`documents/${numberDoc}`)
             localStorage.setItem('nuDoc', response.data.numberDoc);
             localStorage.setItem('nameUsuario',response.data.name);
+            //localStorage.setItem('idDocuments', response.data.id);
             history.push('/detailsDocument');
 
         }catch(error){

@@ -14,6 +14,8 @@ export default function NewUsuario(){
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
      
+    
+
     const history = useHistory();
     
     async function handleNewUsuario(e){
@@ -28,9 +30,10 @@ export default function NewUsuario(){
         }
 
         try{
-            api.post('usuarios',data);
+            const response = api.post('usuarios',data);
+           // localStorage.setItem('idUsuario',response.data.id)
             alert('Criado com Sucesso.');
-            history.push('/profileUsuario');
+            history.push('/profile-usuario');
 
         }catch(error){
             alert('Error ao cadastrar, tente novamente e verifique os dados estão corretos.');

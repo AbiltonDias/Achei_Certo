@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { FiPower, FiTrash2, FiCheckCircle } from 'react-icons/fi';
+import { FiPower, FiCheckCircle } from 'react-icons/fi';
 import './styles.css';
 import acheiLogo from '../../assets/Logo_Achei.svg';
 import acheiImg from '../../assets/UserLogon.png';
@@ -10,6 +10,7 @@ export default function DetailsDocuments(){
     const nameUser =  localStorage.getItem('nameUsuario');
     const numberDoc = localStorage.getItem('nuDoc');
     const history = useHistory();
+    let user = nameUser;
     
     const [documents, setDocuments] = useState('');
 
@@ -17,18 +18,40 @@ export default function DetailsDocuments(){
         api.get(`documents/${numberDoc}`).then(response =>{
             setDocuments(response.data);
         })
-    },numberDoc)
+    })
 
     function handleLogout() {
         localStorage.clear();
         history.push('/')
     }
 
+    if(documents.length === 0 || documents === undefined){
+        return(
+            <div className="details-container">
+            <header>
+             <img src={acheiLogo} alt='Logo Achei'/>
+             
+             <Link className="button" to='/profile-usuario'> Outro documento</Link>
+             <button onClick={handleLogout} type='button'>
+                 <FiPower size={18} color='#7D3AEA'/>
+             </button>
+         </header>
+    
+         <div className='content-nao-encontrado'>
+
+            <h1> Nenhum documento Encontrado! </h1>
+
+            <img src={acheiImg} alt='Imagem Achei' />
+            </div>
+        </div>
+        )
+    }
+
     return(
         <div className="details-container">
                <header>
                 <img src={acheiLogo} alt='Logo Achei'/>
-                <span> {nameUser}, veja: </span>
+                <span> {user}, veja: </span>
 
                 <Link className="button" to='/profile-usuario'> Outro documento</Link>
                 <button onClick={handleLogout} type='button'>

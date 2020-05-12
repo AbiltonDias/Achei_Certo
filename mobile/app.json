@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Be The Hero",
-    "slug": "bethehero",
+    "name": "Achei",
+    "slug": "achei",
     "platforms": [
       "ios",
       "android",
@@ -9,11 +9,11 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logoAchei.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/imgAchei.png",
       "resizeMode": "contain",
-      "backgroundColor": "#E02041"
+      "backgroundColor": "#7D3AEA"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

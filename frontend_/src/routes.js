@@ -9,6 +9,7 @@ import LogonUsuario from './pages/LogonUsuario';
 import ProfileUsuario from './pages/ProfileUsuario';
 import NewUsuario from './pages/NewUsuario';
 import DetailsDocument from './pages/DetailsDocument';
+import Loading from './pages/uteis/Loading';
 
 export default function Routes(){
     return(
@@ -23,6 +24,7 @@ export default function Routes(){
                 <Route path='/profile-usuario'component={ProfileUsuario} />
                 <Route path='/register-usuario' component={NewUsuario} />
                 <Route path='/detailsDocument' component={DetailsDocument} />
+                <Route path='/loading' component={Loading} />
             </Switch>
         </BrowserRouter>
     )

@@ -2,4 +2,4 @@ MIGRATIONS (ENTIDADES NO KNEX)
 
 npx knex migrate:make create_
 
-npx knex migrate:lastest
+npx knex migrate:latest

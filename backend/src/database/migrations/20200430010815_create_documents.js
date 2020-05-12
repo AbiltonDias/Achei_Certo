@@ -6,8 +6,6 @@ exports.up = function(knex) {
       table.string('name').notNullable();
       table.string('description').notNullable();
       // foreign key
-      table.string('user_id');
-      table.foreign('user_id').references('id').inTable('usuarios');
       table.string('ong_id').notNullable();
       table.foreign('ong_id').references('id').inTable('ongs');
   })

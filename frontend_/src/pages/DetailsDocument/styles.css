@@ -81,8 +81,11 @@
     align-items: center;
     justify-content: space-between;
 }
-.details-container .content .group{
+
+.details-container .content-nao-encontrado{
+    color: #7D3AEA;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 40px;
 }
